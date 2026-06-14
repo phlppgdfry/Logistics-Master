@@ -1,3 +1,53 @@
+# Logistics Master
+
+**Port & Supply Chain Intelligence Suite**
+
+Logistics Master is een portfolio-suite voor logistieke software, operationele audits, company intelligence, data-analyse en optimalisatieconcepten. De repo toont hoe logistieke problemen in havens, transport, terminals, warehousing en supply-chain operaties vertaald kunnen worden naar werkende prototypes, dashboards, datasets, business cases en technische architecturen.
+
+De focus ligt niet op losse demo's, maar op een duidelijke combinatie van:
+
+- **Softwareproducten** voor terminalcapaciteit, shipment tracking, delay prediction, reefer monitoring, warehouse analysis en transport matching.
+- **Operationele audits** voor bedrijven zoals ECS, CSP, ICO, CLdN en PSA.
+- **Market intelligence** rond Zeebrugge, port tech, TOS/WMS/TMS-systemen, data-platformen en digitale maturiteit.
+- **Optimization engines** voor empty mileage, ETA-deviaties, terminal dead time, trailer consolidation en warehouse bottlenecks.
+- **Business impact** rond kostenverlaging, hogere benutting, snellere beslissingen, betere visibility en lagere CO2-uitstoot.
+
+## What This Repo Proves
+
+| Capability | Evidence in this repo |
+|---|---|
+| Logistics domain knowledge | Company dossiers, port audits, warehouse/terminal/transport cases |
+| Software engineering | Full-stack apps, APIs, dashboards, tests, Docker-ready projects |
+| Data thinking | Structured datasets, scraping workflows, KPI models, validation scripts |
+| Business analysis | Audit reports, case studies, process analysis, ROI framing |
+| Product thinking | Yard capacity marketplace, delay prediction, empty-mileage matching, control-tower concepts |
+
+## Main Project Areas
+
+| Area | Purpose | Examples |
+|---|---|---|
+| `apps/` | Larger application prototypes | YardEx, YardExx, EcoLoad, Shipment Tracking Platform, TOS Sim |
+| `tools/` | Focused logistics tools and dashboards | PortPulse, Delay DNA, Eco-Match Engine, Warehouse Advisor, Vessel ETA Tracker |
+| `companies/` | Target-company intelligence and audits | ECS, CSP, ICO, CLdN, PSA |
+| `intelligence/` | Market/data intelligence systems | Zeebrugge Port Tech Intelligence |
+| `knowledge/` | Enterprise logistics technology knowledge base | ERP, WMS, TMS, BI, Azure, automation |
+
+## Best Starting Points
+
+If you only have a few minutes, start here:
+
+1. [`tools/eco-match-engine`](./tools/eco-match-engine) — empty-mileage optimizer with FastAPI, tests and business impact.
+2. [`apps/ecoload`](./apps/ecoload) — .NET/Angular ECS-focused trailer, reefer and customs prototype.
+3. [`tools/portpulse`](./tools/portpulse) — terminal dead-time analytics dashboard.
+4. [`tools/delay-dna`](./tools/delay-dna) — shipment delay-risk dashboard for planners.
+5. [`intelligence/logistics-intel`](./intelligence/logistics-intel) — Zeebrugge company, stack and opportunity intelligence.
+
+## Current Status
+
+This repo is evolving from a broad logistics project hub into a more structured **Logistics Master v2** portfolio. Some modules are working prototypes, some are frontend demos, some are research dossiers, and some are concept architectures. The next step is to add a maturity matrix, demo center, case-study index and evidence labels for company intelligence.
+
+---
+
 # 🚢 Logistics Master Hub: Port & Supply Chain Engineering Suite
 
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/KippieG/Logistics-Master?color=C8F135&label=DATA%20VOLUME&style=for-the-badge)
