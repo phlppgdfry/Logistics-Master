@@ -7,9 +7,9 @@
 
 <br/>
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-kippieg.github.io-c8702a?style=for-the-badge&logo=github)](https://kippieg.github.io/ecs-digital-twin/)
-[![Status](https://img.shields.io/badge/Status-Strategic%20Pitch-1e3050?style=for-the-badge)](https://kippieg.github.io/ecs-digital-twin/)
-[![Built With](https://img.shields.io/badge/Built%20With-HTML%20%2F%20CSS%20%2F%20JS-152035?style=for-the-badge&logo=html5)](https://kippieg.github.io/ecs-digital-twin/)
+[![Live Site](https://img.shields.io/badge/Live%20Site-phlppgdfry.github.io-c8702a?style=for-the-badge&logo=github)](https://phlppgdfry.github.io/ecs-digital-twin/)
+[![Status](https://img.shields.io/badge/Status-Strategic%20Pitch-1e3050?style=for-the-badge)](https://phlppgdfry.github.io/ecs-digital-twin/)
+[![Built With](https://img.shields.io/badge/Built%20With-HTML%20%2F%20CSS%20%2F%20JS-152035?style=for-the-badge&logo=html5)](https://phlppgdfry.github.io/ecs-digital-twin/)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/KippieG/ecs-digital-twin/deploy.yml?style=for-the-badge&label=Deploy)](https://github.com/KippieG/ecs-digital-twin/actions)
 
 <br/>
@@ -29,7 +29,7 @@ A fully interactive strategic pitch deck, built as a web experience, proposing a
 
 ECS operates across 35+ European countries — truck, rail, ferry and customs in a single ecosystem. The pitch argues that ECS's biggest untapped advantage is the operational data it already generates, and that a digital twin would turn that data into a proactive decision engine.
 
-→ **[View the live site](https://kippieg.github.io/ecs-digital-twin/)**
+→ **[View the live site](https://phlppgdfry.github.io/ecs-digital-twin/)**
 
 ---
 
@@ -157,7 +157,7 @@ This pitch site is intentionally a **single static HTML file** — zero dependen
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](.)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](.)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](.)
-[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-222?style=flat-square&logo=github)](https://kippieg.github.io/ecs-digital-twin/)
+[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-222?style=flat-square&logo=github)](https://phlppgdfry.github.io/ecs-digital-twin/)
 
 Features used:
 - SVG network diagram with CSS flow animations

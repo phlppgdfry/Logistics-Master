@@ -7,7 +7,7 @@ An executive-ready intelligence repo that turns public Zeebrugge port-logistics 
 
 ![Zeebrugge Port Tech Intelligence dashboard hero](docs/assets/zeebrugge-intelligence-hero.png)
 
-**Live dashboard:** https://kippieg.github.io/zeebrugge-logistics-intel/  
+**Live dashboard:** https://phlppgdfry.github.io/zeebrugge-logistics-intel/  
 **Snapshot date:** 2026-06-03  
 **Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
 **What this is:** market intelligence, data modeling, source scraping, tech-stack inference and commercial opportunity mapping in one portfolio project
@@ -358,7 +358,7 @@ The GitHub Pages dashboard in [`docs/`](docs/index.html) turns the research into
 - software opportunity map
 - method and artifact links
 
-Live page: https://kippieg.github.io/zeebrugge-logistics-intel/
+Live page: https://phlppgdfry.github.io/zeebrugge-logistics-intel/
 
 ### Dashboard Screenshots
 

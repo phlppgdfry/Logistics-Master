@@ -2,7 +2,7 @@
 
 > Real-time vessel tracking dashboard for container terminal operations. Compares live AIS positions against the planned N4 arrival schedule and alerts planners when ships deviate from their ETA — before they arrive.
 
-**[▶ Live Demo](https://kippieg.github.io/vessel-eta-tracker/)** — no API key needed, demo launches automatically.
+**[▶ Live Demo](https://phlppgdfry.github.io/vessel-eta-tracker/)** — no API key needed, demo launches automatically.
 
 ---
 
@@ -63,7 +63,7 @@ Deviation > threshold?  →  Alert (toast + log)
 1. Open `index.html` in any browser
 2. Demo launches automatically with 8 simulated vessels
 
-Or use the [hosted version](https://kippieg.github.io/vessel-eta-tracker/).
+Or use the [hosted version](https://phlppgdfry.github.io/vessel-eta-tracker/).
 
 ### Option 2 — Live AIS data
 
