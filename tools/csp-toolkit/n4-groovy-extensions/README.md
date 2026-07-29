@@ -4,6 +4,10 @@ Navis N4 allows terminals to extend its business flow by injecting **Groovy code
 
 This module contains three production-pattern extensions based on real N4 SDK hook names and patterns.
 
+See [`FUNCTIONAL_ANALYSIS.md`](./FUNCTIONAL_ANALYSIS.md) for the requirements analysis
+behind the gate interceptor — end-user problem, stakeholders, derived requirements,
+design trade-offs, and acceptance criteria — the step before any code was written.
+
 ---
 
 ## Extensions

@@ -1,6 +1,6 @@
 # ECS Eco-Match Engine
 
-![CI](https://github.com/KippieG/eco-match-engine/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/phlppgdfry/eco-match-engine/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111%2B-009688)
 ![Tests](https://img.shields.io/badge/tests-19%20passed-brightgreen)
@@ -78,7 +78,7 @@ eco-match-engine/
 ## Quick start
 
 ```bash
-git clone https://github.com/KippieG/eco-match-engine
+git clone https://github.com/phlppgdfry/eco-match-engine
 cd eco-match-engine
 bash start.sh
 ```

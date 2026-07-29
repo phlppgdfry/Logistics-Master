@@ -7,7 +7,7 @@
 
 [![Live Demo](https://img.shields.io/badge/▶%20Open%20Live%20Demo-delay--dna.vercel.app-8D1D45?style=for-the-badge&logoColor=white)](https://delay-dna.vercel.app)
 &nbsp;
-[![GitHub](https://img.shields.io/badge/Broncode-GitHub-F8CE3E?style=for-the-badge&logo=github&logoColor=black)](https://github.com/KippieG/delay-dna)
+[![GitHub](https://img.shields.io/badge/Broncode-GitHub-F8CE3E?style=for-the-badge&logo=github&logoColor=black)](https://github.com/phlppgdfry/delay-dna)
 
 </div>
 
@@ -161,7 +161,7 @@ In een echte ECS-omgeving verbindt de backend met **Business Central**, **TAS**,
 ## Lokaal uitvoeren
 
 ```bash
-git clone https://github.com/KippieG/delay-dna
+git clone https://github.com/phlppgdfry/delay-dna
 cd delay-dna
 npm install
 npm run dev
@@ -178,7 +178,7 @@ npm run dev
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Philippe%20Godfroy-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/philippegodfroy)
 &nbsp;
-[![GitHub](https://img.shields.io/badge/GitHub-KippieG-181717?style=flat-square&logo=github)](https://github.com/KippieG)
+[![GitHub](https://img.shields.io/badge/GitHub-phlppgdfry-181717?style=flat-square&logo=github)](https://github.com/phlppgdfry)
 
 <sub>Delay DNA · AI Logistics Prediction Engine · Conceptportfolio ECS European Containers · Zeebrugge</sub>
 

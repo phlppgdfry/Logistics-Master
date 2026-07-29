@@ -119,7 +119,7 @@ Dit project simuleert de interne tooling die een ECS-planner en logistiek operat
 ### Lokaal — één commando
 
 ```bash
-git clone https://github.com/KippieG/ecs-ecoload.git
+git clone https://github.com/phlppgdfry/ecs-ecoload.git
 cd ecs-ecoload
 bash run.sh
 ```

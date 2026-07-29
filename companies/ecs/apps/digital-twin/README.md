@@ -10,7 +10,7 @@
 [![Live Site](https://img.shields.io/badge/Live%20Site-phlppgdfry.github.io-c8702a?style=for-the-badge&logo=github)](https://phlppgdfry.github.io/ecs-digital-twin/)
 [![Status](https://img.shields.io/badge/Status-Strategic%20Pitch-1e3050?style=for-the-badge)](https://phlppgdfry.github.io/ecs-digital-twin/)
 [![Built With](https://img.shields.io/badge/Built%20With-HTML%20%2F%20CSS%20%2F%20JS-152035?style=for-the-badge&logo=html5)](https://phlppgdfry.github.io/ecs-digital-twin/)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/KippieG/ecs-digital-twin/deploy.yml?style=for-the-badge&label=Deploy)](https://github.com/KippieG/ecs-digital-twin/actions)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/phlppgdfry/ecs-digital-twin/deploy.yml?style=for-the-badge&label=Deploy)](https://github.com/phlppgdfry/ecs-digital-twin/actions)
 
 <br/>
 

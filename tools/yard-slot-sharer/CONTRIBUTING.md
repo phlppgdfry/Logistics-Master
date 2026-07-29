@@ -49,7 +49,7 @@ yard-slot-sharer/
 
 ```bash
 # 1. Clone
-git clone https://github.com/KippieG/YardEx.git
+git clone https://github.com/phlppgdfry/YardEx.git
 cd YardEx
 
 # 2. Start database

@@ -5,7 +5,7 @@
 
 *Terminals buy and sell surplus yard space, truck slots, and vessel slots without ever revealing their identity.*
 
-[![CI](https://github.com/KippieG/YardEx/actions/workflows/ci.yml/badge.svg)](https://github.com/KippieG/YardEx/actions/workflows/ci.yml)
+[![CI](https://github.com/phlppgdfry/YardEx/actions/workflows/ci.yml/badge.svg)](https://github.com/phlppgdfry/YardEx/actions/workflows/ci.yml)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
@@ -111,7 +111,7 @@ Terminal A (provider)                 Terminal B (requester)
 ### Option A — Docker (one command)
 
 ```bash
-git clone https://github.com/KippieG/YardEx.git && cd YardEx
+git clone https://github.com/phlppgdfry/YardEx.git && cd YardEx
 
 # Start Postgres
 docker-compose up -d

@@ -10,7 +10,7 @@
 
 [![Live Demo](https://img.shields.io/badge/▶%20Open%20Live%20Demo-portpulse--blue.vercel.app-06b6d4?style=for-the-badge&logoColor=white)](https://portpulse-blue.vercel.app)
 &nbsp;
-[![GitHub](https://img.shields.io/badge/Broncode-GitHub-1f2937?style=for-the-badge&logo=github&logoColor=white)](https://github.com/KippieG/portpulse)
+[![GitHub](https://img.shields.io/badge/Broncode-GitHub-1f2937?style=for-the-badge&logo=github&logoColor=white)](https://github.com/phlppgdfry/portpulse)
 
 </div>
 
@@ -82,7 +82,7 @@ Er is geen centraal overzicht. Geen voorspelling. Geen AI.
 ## Lokaal draaien
 
 ```bash
-git clone https://github.com/KippieG/portpulse.git
+git clone https://github.com/phlppgdfry/portpulse.git
 cd portpulse
 npm install
 npm run dev
@@ -124,7 +124,7 @@ PortPulse maakt dit meetbaar, zichtbaar, en herhaalbaar.
 
 **Philippe Godfroy**  
 Zeebrugge, België  
-[github.com/KippieG](https://github.com/KippieG)
+[github.com/phlppgdfry](https://github.com/phlppgdfry)
 
 ---
 

@@ -322,15 +322,15 @@ Auditing ECS's digital ecosystem naturally led to understanding their operations
 
 | Project | What it does | Stack |
 |---------|-------------|-------|
-| [**eco-match-engine**](https://github.com/KippieG/eco-match-engine) | Eliminates empty return mileage by AI-matching open trips across ECS's network. Integrates with TAS + Business Central. Estimated 15–25% reduction in empty km per route. | Python · FastAPI · Power Platform |
-| [**delay-dna**](https://github.com/KippieG/delay-dna) | Predicts shipment delays hours or a full day before they materialise — combining weather, ferry schedules, customs hold patterns, and historical delay data per route. | React · Node.js · ML |
-| [**ecs-ecoload**](https://github.com/KippieG/ecs-ecoload) | Super Mega Trailer load optimizer, live reefer container monitoring via SignalR, Brexit customs document validator. | .NET 10 · Angular 17 · DDD · Docker |
+| [**eco-match-engine**](https://github.com/phlppgdfry/eco-match-engine) | Eliminates empty return mileage by AI-matching open trips across ECS's network. Integrates with TAS + Business Central. Estimated 15–25% reduction in empty km per route. | Python · FastAPI · Power Platform |
+| [**delay-dna**](https://github.com/phlppgdfry/delay-dna) | Predicts shipment delays hours or a full day before they materialise — combining weather, ferry schedules, customs hold patterns, and historical delay data per route. | React · Node.js · ML |
+| [**ecs-ecoload**](https://github.com/phlppgdfry/ecs-ecoload) | Super Mega Trailer load optimizer, live reefer container monitoring via SignalR, Brexit customs document validator. | .NET 10 · Angular 17 · DDD · Docker |
 
 ---
 
 <div align="center">
 
 **Philippe Godfroy** · [philgodf@gmail.com](mailto:philgodf@gmail.com)  
-[github.com/KippieG](https://github.com/KippieG)
+[github.com/phlppgdfry](https://github.com/phlppgdfry)
 
 </div>

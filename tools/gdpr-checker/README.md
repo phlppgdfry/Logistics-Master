@@ -6,7 +6,7 @@
 
 *Een interactief auditinstrument met 24 checkpunten, live risicoscoring, actieplan-tracking en HTML-export.*
 
-[![Versie](https://img.shields.io/badge/versie-2.0-blue?style=flat-square)](https://github.com/KippieG/gdpr-compliance-checker)
+[![Versie](https://img.shields.io/badge/versie-2.0-blue?style=flat-square)](https://github.com/phlppgdfry/gdpr-compliance-checker)
 [![Licentie](https://img.shields.io/badge/licentie-MIT-green?style=flat-square)](LICENSE)
 [![Stack](https://img.shields.io/badge/stack-Vanilla%20HTML%20%2F%20CSS%20%2F%20JS-orange?style=flat-square)]()
 [![Demo](https://img.shields.io/badge/demo-?demo%3D1-purple?style=flat-square)](#snel-starten)
@@ -82,7 +82,7 @@
 
 ```bash
 # Clone
-git clone https://github.com/KippieG/gdpr-compliance-checker.git
+git clone https://github.com/phlppgdfry/gdpr-compliance-checker.git
 cd gdpr-compliance-checker
 
 # Open direct in browser — geen server nodig
@@ -94,7 +94,7 @@ open "index.html?demo=1"
 
 **Of open online:**
 ```
-https://KippieG.github.io/gdpr-compliance-checker/?demo=1
+https://phlppgdfry.github.io/gdpr-compliance-checker/?demo=1
 ```
 
 ---
@@ -233,7 +233,7 @@ Dit tool is een **indicatief hulpmiddel** voor interne audits en zelfevaluatie. 
 **Ontwikkeld door Philippe Godfroy**
 
 [![Email](https://img.shields.io/badge/email-philgodf%40gmail.com-blue?style=flat-square&logo=gmail)](mailto:philgodf@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-KippieG-black?style=flat-square&logo=github)](https://github.com/KippieG)
+[![GitHub](https://img.shields.io/badge/GitHub-phlppgdfry-black?style=flat-square&logo=github)](https://github.com/phlppgdfry)
 
 *MIT License · Versie 2.0 · 2026*
 

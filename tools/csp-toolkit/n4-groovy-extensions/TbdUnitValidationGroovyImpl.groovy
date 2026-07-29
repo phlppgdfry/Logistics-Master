@@ -38,7 +38,7 @@ class TbdUnitValidationGroovyImpl {
     /**
      * ISO 6346 container ID validation.
      * Format: 4 uppercase letters (owner code + category) + 6 digits + 1 check digit
-     * Example: CSNU7402841
+     * Example: CSNU7402845
      */
     private void validateContainerId(String unitId) {
         if (!unitId) {
@@ -50,7 +50,7 @@ class TbdUnitValidationGroovyImpl {
         if (!(cleaned ==~ /^[A-Z]{4}\d{7}$/)) {
             throw new Exception(
                 "Invalid container ID format: '${unitId}'. " +
-                "Expected ISO 6346 format (e.g. CSNU7402841)."
+                "Expected ISO 6346 format (e.g. CSNU7402845)."
             )
         }
 
@@ -71,12 +71,12 @@ class TbdUnitValidationGroovyImpl {
         int sum = 0
         (0..9).each { i ->
             char c = id.charAt(i)
-            int val = c.isDigit() ? (c - '0') : LETTER_VALUES.indexOf(c)
+            int val = c.isDigit() ? Character.getNumericValue(c) : LETTER_VALUES.indexOf(c as String)
             sum += val * (int) Math.pow(2, i)
         }
         int check = sum % 11
         if (check == 10) check = 0
-        return check == (id.charAt(10) - '0')
+        return check == Character.getNumericValue(id.charAt(10))
     }
 
     /**
@@ -132,8 +132,8 @@ class TbdUnitValidationGroovyImpl {
 
         // Test 1: Valid container
         println "Test 1: Valid container ID"
-        hook.validateContainerId('CSNU7402841')
-        println "  ✓ CSNU7402841 passed"
+        hook.validateContainerId('CSNU7402845')
+        println "  ✓ CSNU7402845 passed"
 
         // Test 2: Invalid format
         println "\nTest 2: Invalid container ID format"

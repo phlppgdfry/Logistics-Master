@@ -133,7 +133,7 @@ The `analysis-data.xlsx` contains 4 worksheets:
 
 **Philippe Godfroy** — IT Developer & Business Analyst  
 📍 Knokke-Heist, Belgium · Reviewell BV  
-🔗 [GitHub](https://github.com/KippieG) · [LinkedIn](https://linkedin.com/in/philippe-godfroy)
+🔗 [GitHub](https://github.com/phlppgdfry) · [LinkedIn](https://linkedin.com/in/philippe-godfroy)
 
 > *This project is part of my Business Analyst portfolio, demonstrating end-to-end BA methodology applied to a realistic logistics case in the port sector.*
 

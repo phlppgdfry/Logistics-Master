@@ -118,10 +118,12 @@ class GateTransactionInterceptor {
         // In production: log?.info(message) writes to N4 event log
     }
 
-    // Stubs — in production these call N4 APIs or the VBS integration layer
-    private String lookupVbsPlate(String bookingId) { return '1-ABC-234' }
-    private List lookupActiveHolds(String containerId) { return [] }
-    private String lookupContainerPin(String containerId) { return '4821' }
+    // Stubs — in production these call N4 APIs or the VBS integration layer.
+    // Kept `protected` (not `private`) so tests can stub them as a seam,
+    // instead of hitting real N4/VBS APIs from a unit test.
+    protected String lookupVbsPlate(String bookingId) { return '1-ABC-234' }
+    protected List lookupActiveHolds(String containerId) { return [] }
+    protected String lookupContainerPin(String containerId) { return '4821' }
 
     // Simulator
     static void main(String[] args) {

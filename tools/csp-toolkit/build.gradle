@@ -1,0 +1,38 @@
+plugins {
+    id 'groovy'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['n4-groovy-extensions']
+            exclude 'test/**'
+        }
+    }
+    test {
+        groovy {
+            srcDirs = ['n4-groovy-extensions/test']
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.apache.groovy:groovy:4.0.24'
+    implementation 'org.apache.groovy:groovy-dateutil:4.0.24'
+    testImplementation 'org.spockframework:spock-core:2.4-M5-groovy-4.0'
+    testImplementation 'net.bytebuddy:byte-buddy:1.15.10'
+    testImplementation 'org.objenesis:objenesis:3.4'
+    testImplementation 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        exceptionFormat 'full'
+    }
+}
