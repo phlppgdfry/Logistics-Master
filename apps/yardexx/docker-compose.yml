@@ -4,10 +4,10 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: yardexx
-      POSTGRES_PASSWORD: yardexx_dev
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run python3 scripts/setup_local_env.py first}
       POSTGRES_DB: yardexx_db
     ports:
-      - "5433:5432"
+      - "127.0.0.1:5433:5432"
     volumes:
       - yardexx_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -23,8 +23,8 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://yardexx:yardexx_dev@db:5432/yardexx_db
-      JWT_SECRET: change-this-in-production
+      DATABASE_URL: postgresql://yardexx:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@db:5432/yardexx_db
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET}
       NODE_ENV: production
     ports:
       - "3000:3000"

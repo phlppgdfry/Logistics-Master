@@ -56,7 +56,18 @@ export function WarehouseMap({ zones, onZoneClick, selectedZoneId }: Props) {
           const util = zone.currentUtilization
 
           return (
-            <g key={zone.id} onClick={() => onZoneClick?.(zone)} className={onZoneClick ? 'cursor-pointer' : ''}>
+            <g key={zone.id} onClick={() => onZoneClick?.(zone)}
+              role={onZoneClick ? 'button' : undefined}
+              tabIndex={onZoneClick ? 0 : undefined}
+              aria-label={onZoneClick ? zone.name : undefined}
+              aria-pressed={onZoneClick ? isSelected : undefined}
+              onKeyDown={event => {
+                if (onZoneClick && (event.key === 'Enter' || event.key === ' ')) {
+                  event.preventDefault()
+                  onZoneClick(zone)
+                }
+              }}
+              className={onZoneClick ? 'cursor-pointer focus:outline focus:outline-2 focus:outline-white' : ''}>
               {/* Zone fill */}
               <rect x={px} y={py} width={pw} height={ph} rx="8"
                 fill={colors.fill}

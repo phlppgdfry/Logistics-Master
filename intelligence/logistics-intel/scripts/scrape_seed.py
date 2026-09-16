@@ -51,14 +51,15 @@ def slug(value: str) -> str:
     return value.strip("-")[:80] or "source"
 
 
-def fetch(url: str, *, verify_tls: bool = True) -> str:
+def fetch(url: str) -> str:
     request = urllib.request.Request(
         url,
         headers={
             "User-Agent": "zeebrugge-logistics-intel/0.1 (+local research script)",
         },
     )
-    context = ssl.create_default_context() if verify_tls else ssl._create_unverified_context()
+    context = ssl.create_default_context()
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
     with urllib.request.urlopen(request, timeout=20, context=context) as response:
         raw = response.read()
     return raw.decode("utf-8", errors="replace")
@@ -85,13 +86,7 @@ def main() -> int:
         target = OUT_DIR / name
         print(f"Fetching {source_id}: {url}")
         try:
-            try:
-                html = fetch(url)
-            except urllib.error.URLError as exc:
-                if "CERTIFICATE_VERIFY_FAILED" not in str(exc):
-                    raise
-                print("  TLS verification failed locally; retrying without verification")
-                html = fetch(url, verify_tls=False)
+            html = fetch(url)
             text = extract_text(html)
             target.write_text(
                 f"Title: {title}\nURL: {url}\nSource ID: {source_id}\n\n{text}\n",

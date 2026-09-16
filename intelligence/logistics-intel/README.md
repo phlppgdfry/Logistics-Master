@@ -466,3 +466,9 @@ For investment, sales or partnership decisions, validate the findings with compa
 - Verify VAT, registry and financial signals through official KBO/BCE and NBB sources.
 - Add role-level outreach mapping for operations, IT, customs, terminal planning and commercial teams.
 - Repeat the same research pattern for another logistics cluster to prove transferability.
+
+## HTTPS certificates
+
+Scrapers require verified server certificates and TLS 1.2 or newer. Certificate
+errors are reported rather than retried without verification. If a trusted proxy
+uses an internal CA, configure `SSL_CERT_FILE` with its trusted CA bundle.

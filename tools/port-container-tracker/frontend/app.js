@@ -1,3 +1,10 @@
+const chartInstances = new Map();
+
+function renderChart(canvas, config) {
+  chartInstances.get(canvas)?.destroy();
+  chartInstances.set(canvas, new Chart(canvas, config));
+}
+
 // Port Container Tracker — Dashboard Logic
 // Simulates live terminal data feed (in production: fetched from TOS REST API)
 
@@ -66,7 +73,7 @@ function animateCount(id, target, suffix) {
 
 function renderThroughputChart() {
   const ctx = document.getElementById('throughputChart').getContext('2d');
-  new Chart(ctx, {
+  renderChart(ctx, {
     type: 'bar',
     data: {
       labels: DATA.throughput.labels,
@@ -101,7 +108,7 @@ function renderOccupancyChart() {
   const colors = DATA.occupancy.values.map(v =>
     v > 85 ? 'rgba(248,81,73,0.7)' : v > 70 ? 'rgba(210,153,34,0.7)' : 'rgba(63,185,80,0.7)'
   );
-  new Chart(ctx, {
+  renderChart(ctx, {
     type: 'bar',
     data: {
       labels: DATA.occupancy.labels,
@@ -121,7 +128,7 @@ function renderOccupancyChart() {
 
 function renderTurnaroundChart() {
   const ctx = document.getElementById('turnaroundChart').getContext('2d');
-  new Chart(ctx, {
+  renderChart(ctx, {
     type: 'bar',
     data: {
       labels: DATA.turnaround.labels,

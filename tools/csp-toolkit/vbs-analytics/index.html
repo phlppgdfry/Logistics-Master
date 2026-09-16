@@ -154,6 +154,14 @@
 </main>
 
 <script>
+const chartInstances = new Map();
+
+function renderChart(canvas, config) {
+  chartInstances.get(canvas)?.destroy();
+  chartInstances.set(canvas, new Chart(canvas, config));
+}
+
+
 const C = {
   accent: '#388bfd', green: '#3fb950', red: '#f85149',
   yellow: '#d29922', muted: '#8b949e', grid: 'rgba(48,54,61,0.8)',
@@ -218,7 +226,7 @@ function animCount(id, target) {
 function drawBookingChart() {
   const today = [2,1,0,0,0,2,9,24,38,42,40,32,30,33,37,41,39,31,22,16,11,7,4,2];
   const yest  = [2,1,0,0,0,1,8,22,35,40,38,30,28,32,35,40,38,30,20,15,10,6,4,2];
-  new Chart(document.getElementById('bookingChart'), {
+  renderChart(document.getElementById('bookingChart'), {
     type: 'line',
     data: {
       labels: HOURS.map(h => `${h}:00`),
@@ -232,7 +240,7 @@ function drawBookingChart() {
 }
 
 function drawStatusChart() {
-  new Chart(document.getElementById('statusChart'), {
+  renderChart(document.getElementById('statusChart'), {
     type: 'doughnut',
     data: {
       labels: ['Approved', 'Delayed', 'Blocked', 'No-show'],
@@ -277,7 +285,7 @@ function drawHeatmap() {
 }
 
 function drawGateTimeChart() {
-  new Chart(document.getElementById('gateTimeChart'), {
+  renderChart(document.getElementById('gateTimeChart'), {
     type: 'bar',
     data: {
       labels: ['<20s','20-30s','30-40s','40-60s','>60s'],
@@ -293,7 +301,7 @@ function drawGateTimeChart() {
 }
 
 function drawCarrierChart() {
-  new Chart(document.getElementById('carrierChart'), {
+  renderChart(document.getElementById('carrierChart'), {
     type: 'bar',
     data: {
       labels: ['ECS','Jan De Rijk','Verstraete','Comat','Gheys','Other'],
@@ -309,7 +317,7 @@ function drawCarrierChart() {
 }
 
 function drawWeeklyChart() {
-  new Chart(document.getElementById('weeklyChart'), {
+  renderChart(document.getElementById('weeklyChart'), {
     type: 'bar',
     data: {
       labels: ['W18','W19','W20','W21','W22'],

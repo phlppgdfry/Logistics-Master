@@ -16,6 +16,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: TLS verification regression
+        run: python -m unittest discover -s tests -p test_tls.py
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:

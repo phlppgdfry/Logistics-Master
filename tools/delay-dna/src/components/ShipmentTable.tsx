@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Info, ChevronRight } from 'lucide-react';
 import { shipments } from '../data/shipments';
 import {
@@ -25,7 +25,7 @@ export function ShipmentTable() {
         <div>
           <h2 className="text-base font-semibold text-white">Live Shipment Risico Monitor</h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            AI-risicoscore per actieve zending · klik op een rij voor de volledige vertraging-analyse
+            AI-risicoscore per actieve zending · klik op het zendingnummer voor de volledige vertraging-analyse
           </p>
         </div>
         <div className="flex gap-2 flex-wrap">
@@ -63,24 +63,26 @@ export function ShipmentTable() {
           </thead>
           <tbody>
             {sorted.map(s => (
-              <>
+              <Fragment key={s.id}>
                 {/* ── Main row ── */}
                 <tr
                   key={s.id}
-                  onClick={() => setExpanded(expanded === s.id ? null : s.id)}
-                  className="border-b border-white/[0.03] hover:bg-white/[0.025] cursor-pointer transition-colors group"
+                  className="border-b border-white/[0.03] hover:bg-white/[0.025] transition-colors group"
                 >
                   <td className="px-5 py-3">
-                    <div className="flex items-center gap-2">
+                    <button type="button" className="flex items-center gap-2 text-left"
+                      aria-expanded={expanded === s.id}
+                      aria-label={`Details ${s.id}`}
+                      onClick={() => setExpanded(expanded === s.id ? null : s.id)}>
                       <ChevronRight
                         size={13}
                         className={`text-slate-600 transition-transform ${expanded === s.id ? 'rotate-90' : ''}`}
                       />
-                      <div>
-                        <p className="font-mono text-xs text-[#F8CE3E]">{s.id}</p>
-                        <p className="text-[11px] text-slate-500">{s.containerType}</p>
-                      </div>
-                    </div>
+                      <span>
+                        <span className="font-mono text-xs text-[#F8CE3E]">{s.id}</span>
+                        <span className="block text-[11px] text-slate-500">{s.containerType}</span>
+                      </span>
+                    </button>
                   </td>
                   <td className="px-5 py-3 text-xs text-slate-300 whitespace-nowrap">{s.route}</td>
                   <td className="px-5 py-3 text-xs text-slate-300 whitespace-nowrap">{s.client}</td>
@@ -197,7 +199,7 @@ export function ShipmentTable() {
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>

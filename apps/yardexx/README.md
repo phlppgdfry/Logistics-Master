@@ -19,8 +19,11 @@ Volledig anoniem kopen en verkopen van surplus terminalcapaciteit: container, Ro
 ## Lokaal starten
 
 ```bash
-cp .env.example .env.local
-# Vul DATABASE_URL en JWT_SECRET in
+python3 scripts/setup_local_env.py
+set -a
+source .env
+set +a
+# .env bevat nu unieke lokale DATABASE_URL en JWT_SECRET
 
 npm install
 npm run dev
@@ -61,3 +64,21 @@ De app gebruikt nu een in-memory store (`lib/db.ts`). Voor productie:
 ---
 
 *Privé. Niet publiek delen.*
+
+## Local database credentials
+
+Run `python3 scripts/setup_local_env.py` before starting a new local database. It
+creates a private `.env` with a random password and matching `DATABASE_URL`, and
+refuses to overwrite existing configuration. Docker Compose reads `.env`; for
+Python commands, dbt or Prisma CLI, export it first:
+
+```bash
+set -a
+source .env
+set +a
+```
+
+For an existing PostgreSQL volume, keep its current credentials until you change
+the database role password and update `.env` together. Changing an environment
+variable does not rotate the password stored in PostgreSQL. Never reuse the old
+public demo credentials on a reachable or production database.

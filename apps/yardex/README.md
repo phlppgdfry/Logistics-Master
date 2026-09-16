@@ -322,3 +322,10 @@ MIT © Philippe Godfroy — see [LICENSE](LICENSE).
 <div align="center">
   <sub>Built for the port logistics sector — Zeehaven Zeebrugge, Belgium.</sub>
 </div>
+
+## Local database password
+
+Generate a local password with `openssl rand -hex 24`. Set `DB_PASSWORD` to that
+value in both the project-root `.env` (Docker Compose) and `server/.env` (API).
+No database password is built into the application. Existing database volumes
+require changing the role password separately before updating these files.

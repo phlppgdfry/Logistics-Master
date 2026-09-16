@@ -40,12 +40,13 @@ class SignalParser(html.parser.HTMLParser):
             self.stylesheets.append(values.get("href", ""))
 
 
-def fetch(url: str, *, verify_tls: bool = True) -> tuple[str, str]:
+def fetch(url: str) -> tuple[str, str]:
     request = urllib.request.Request(
         url,
         headers={"User-Agent": "zeebrugge-logistics-intel/0.2 (+web tech scan)"},
     )
-    context = ssl.create_default_context() if verify_tls else ssl._create_unverified_context()
+    context = ssl.create_default_context()
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
     with urllib.request.urlopen(request, timeout=20, context=context) as response:
         headers = "\n".join(f"{key}: {value}" for key, value in response.headers.items())
         body = response.read(1_000_000).decode("utf-8", errors="replace")
@@ -93,12 +94,7 @@ def main() -> int:
         if not url:
             continue
         try:
-            try:
-                headers, body = fetch(url)
-            except urllib.error.URLError as exc:
-                if "CERTIFICATE_VERIFY_FAILED" not in str(exc):
-                    raise
-                headers, body = fetch(url, verify_tls=False)
+            headers, body = fetch(url)
             parser = SignalParser()
             parser.feed(body)
             signals = infer_signals(headers, body, parser)

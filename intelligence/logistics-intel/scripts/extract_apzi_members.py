@@ -79,12 +79,13 @@ class TextExtractor(html.parser.HTMLParser):
             self.parts.append(text)
 
 
-def fetch(url: str, *, verify_tls: bool = True) -> str:
+def fetch(url: str) -> str:
     request = urllib.request.Request(
         url,
         headers={"User-Agent": "zeebrugge-logistics-intel/0.2 (+research script)"},
     )
-    context = ssl.create_default_context() if verify_tls else ssl._create_unverified_context()
+    context = ssl.create_default_context()
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
     with urllib.request.urlopen(request, timeout=20, context=context) as response:
         return response.read().decode("utf-8", errors="replace")
 
@@ -202,12 +203,7 @@ def main() -> int:
     seen: set[tuple[str, str]] = set()
 
     for url in URLS:
-        try:
-            html = fetch(url)
-        except urllib.error.URLError as exc:
-            if "CERTIFICATE_VERIFY_FAILED" not in str(exc):
-                raise
-            html = fetch(url, verify_tls=False)
+        html = fetch(url)
         parser = TextExtractor()
         parser.feed(html)
         for text in parser.parts:

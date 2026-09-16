@@ -3,11 +3,12 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
 
 const connectionString =
-  process.env.DATABASE_URL ?? "postgresql://yardexx:yardexx_dev@localhost:5433/yardexx_db";
+  process.env.DATABASE_URL;
+if (!connectionString) throw new Error("DATABASE_URL must be configured");
 const isProd = connectionString.includes("supabase");
 const adapter = new PrismaPg({
   connectionString,
-  ...(isProd && { ssl: { rejectUnauthorized: false } }),
+  ...(isProd && { ssl: { rejectUnauthorized: true } }),
 });
 const prisma = new PrismaClient({ adapter });
 
