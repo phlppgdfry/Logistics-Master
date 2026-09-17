@@ -22,3 +22,18 @@ jobs:
         run: python -m unittest discover -s intelligence/logistics-intel/tests -p test_tls.py
       - name: Chart lifecycle
         run: node --test tests/chart-lifecycle.test.cjs
+
+  database-tls:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/yardexx
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/yardexx/package-lock.json
+      - run: npm ci --ignore-scripts
+      - run: node --import tsx --test tests/database-config.test.ts

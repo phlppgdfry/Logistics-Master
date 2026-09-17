@@ -82,3 +82,16 @@ For an existing PostgreSQL volume, keep its current credentials until you change
 the database role password and update `.env` together. Changing an environment
 variable does not rotate the password stored in PostgreSQL. Never reuse the old
 public demo credentials on a reachable or production database.
+
+## Verified cloud database TLS
+
+Supabase connections use the public Supabase Root 2021 CA bundled in
+`lib/supabase-ca.ts`; Neon uses the system trust store. Certificate and hostname
+verification remain enabled with TLS 1.2 or newer. `DATABASE_CA_CERT` accepts a
+PEM CA override (including escaped newlines) for a private CA or CA rotation.
+URL SSL parameters cannot override these checks for cloud connections.
+
+Source: [Supabase SSL verification documentation](https://supabase.com/docs/guides/platform/ssl-enforcement).
+The CA download URL is the one used by
+[Supabase Studio](https://github.com/supabase/supabase/blob/master/apps/studio/hooks/custom-content/custom-content.json).
+Run the configuration regressions with `npx tsx --test tests/database-config.test.ts`.

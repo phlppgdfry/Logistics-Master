@@ -1,19 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { databaseConfig } from "./database-config";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
 function createPrismaClient() {
-  const connectionString =
-    process.env.DATABASE_URL;
-  if (!connectionString) throw new Error("DATABASE_URL must be configured");
-
-  // Cloud database connections must verify the server certificate.
-  const ssl = connectionString.includes("supabase") || connectionString.includes("neon")
-    ? { rejectUnauthorized: true }
-    : undefined;
-
-  const adapter = new PrismaPg({ connectionString, ssl });
+  const adapter = new PrismaPg(databaseConfig());
 
   return new PrismaClient({
     adapter,

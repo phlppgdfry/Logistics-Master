@@ -1,15 +1,9 @@
 import { PrismaClient, CapacityType, Region } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
+import { databaseConfig } from "../lib/database-config";
 
-const connectionString =
-  process.env.DATABASE_URL;
-if (!connectionString) throw new Error("DATABASE_URL must be configured");
-const isProd = connectionString.includes("supabase");
-const adapter = new PrismaPg({
-  connectionString,
-  ...(isProd && { ssl: { rejectUnauthorized: true } }),
-});
+const adapter = new PrismaPg(databaseConfig());
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
