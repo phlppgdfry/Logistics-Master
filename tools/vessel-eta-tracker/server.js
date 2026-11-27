@@ -29,7 +29,7 @@ const httpServer = http.createServer((req, res) => {
   // Only serve files inside this folder: resolve, then require the folder prefix.
   const root = path.resolve(__dirname);
   const file = path.resolve(root, '.' + path.posix.normalize(urlPath));
-  if (file !== root && !file.startsWith(root + path.sep)) {
+  if (!file.startsWith(root + path.sep)) {
     res.writeHead(404); res.end('Not found'); return;
   }
   fs.readFile(file, (err, data) => {
