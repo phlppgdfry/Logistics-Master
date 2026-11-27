@@ -19,8 +19,19 @@ const MIME     = { '.html':'text/html', '.json':'application/json',
 
 // ── HTTP static file server ──────────────────────────────────────────────────
 const httpServer = http.createServer((req, res) => {
-  const url  = req.url === '/' ? '/index.html' : req.url;
-  const file = path.join(__dirname, url.split('?')[0]);
+  let urlPath;
+  try {
+    urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+  } catch {
+    res.writeHead(400); res.end('Bad request'); return;
+  }
+  if (urlPath === '/') urlPath = '/index.html';
+  // Only serve files inside this folder: resolve, then require the folder prefix.
+  const root = path.resolve(__dirname);
+  const file = path.resolve(root, '.' + path.posix.normalize(urlPath));
+  if (file !== root && !file.startsWith(root + path.sep)) {
+    res.writeHead(404); res.end('Not found'); return;
+  }
   fs.readFile(file, (err, data) => {
     if (err) { res.writeHead(404); res.end('Not found'); return; }
     const ext = path.extname(file);
@@ -45,8 +56,7 @@ wss.on('connection', (client) => {
 
         upstream.on('open', () => {
           upstream.send(JSON.stringify(sub));
-          console.log('[proxy] Subscribed to aisstream.io, key=…' +
-            (sub.APIKey || '').slice(-6));
+          console.log('[proxy] Subscribed to aisstream.io');
         });
 
         upstream.on('message', (data, isBinary) => {

@@ -16,11 +16,15 @@ public sealed class GlobalExceptionMiddleware(RequestDelegate next, ILogger<Glob
         }
         catch (Exception ex)
         {
+            // Strip CR/LF so a crafted path can't forge extra log lines.
             logger.LogError(ex, "Onbehandelde uitzondering voor {Method} {Path}",
-                context.Request.Method, context.Request.Path);
+                Sanitize(context.Request.Method), Sanitize(context.Request.Path.ToString()));
             await HandleExceptionAsync(context, ex);
         }
     }
+
+    private static string Sanitize(string value) =>
+        value.Replace("\r", string.Empty).Replace("\n", string.Empty);
 
     private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
