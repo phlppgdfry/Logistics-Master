@@ -4,9 +4,21 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 const FROM = "YardExx <noreply@yardexx.com>";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
+// Plain-text preview for the console fallback. `[^<>]*` keeps the match linear, and
+// repeating until nothing changes also removes tags that a single pass would rebuild.
+function stripTags(html: string): string {
+  let prev: string;
+  let out = html;
+  do {
+    prev = out;
+    out = out.replace(/<[^<>]*>/g, "");
+  } while (out !== prev);
+  return out.replace(/[<>]/g, "");
+}
+
 async function send(to: string, subject: string, html: string) {
   if (!resend) {
-    console.log(`[EMAIL] To: ${to}\nSubject: ${subject}\n${html.replace(/<[^>]+>/g, "")}`);
+    console.log(`[EMAIL] To: ${to}\nSubject: ${subject}\n${stripTags(html)}`);
     return;
   }
   await resend.emails.send({ from: FROM, to, subject, html });

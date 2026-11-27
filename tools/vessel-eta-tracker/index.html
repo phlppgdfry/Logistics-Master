@@ -557,6 +557,8 @@
 <div id="toasts"></div>
 
 <script>
+// Vessel names, voyages and AIS errors come from the AIS stream, which ships set themselves.
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 // ─── Config ───────────────────────────────────────────────────────────────────
 const DEFAULT_API_KEY = '897a66335782442231c37a9761fcce9accd8f6f3';
 const LS_KEY = 'vesseleta_apikey';
@@ -1144,8 +1146,8 @@ function putMarker(mmsi) {
   });
   const sp=SPECS[mmsi]||{};
   const tip=[
-    `<b>${v.name||mmsi}</b>`,
-    `<span style="color:var(--muted)">${(v.sog||0).toFixed(1)} kn · ${v.distKm??'—'} km · Berth ${v.berth||'TBC'}</span>`,
+    `<b>${esc(v.name||mmsi)}</b>`,
+    `<span style="color:var(--muted)">${(v.sog||0).toFixed(1)} kn · ${v.distKm??'—'} km · Berth ${esc(v.berth||'TBC')}</span>`,
     sp.teu ? `<span style="color:var(--muted)">${sp.teu.toLocaleString()} TEU · ${sp.loa}m LOA</span>` : '',
     v.dev!==undefined ? `<span style="color:${col}">${v.dev>0?'+':''}${v.dev} min deviation</span>` : '',
   ].filter(Boolean).join('<br>');
@@ -1207,18 +1209,18 @@ function renderDetail(v) {
   document.getElementById('dinn').innerHTML=`
     <div class="dhead">
       <div>
-        <div class="dname">${flag?flag+' ':''} ${v.name||v.mmsi}</div>
+        <div class="dname">${flag?flag+' ':''} ${esc(v.name||v.mmsi)}</div>
         <div class="dvoy">${
-          v.voy ? `${v.svc||''} · Voyage ${v.voy}` :
-          v.dest ? `Destination: <span style="color:${hasZee?'#3fc05a':'var(--text2)'}">${v.dest.trim()}</span>` :
+          v.voy ? `${esc(v.svc||'')} · Voyage ${esc(v.voy)}` :
+          v.dest ? `Destination: <span style="color:${hasZee?'#3fc05a':'var(--text2)'}">${esc(v.dest.trim())}</span>` :
           `MMSI: ${v.mmsi}`
         }</div>
       </div>
       <button class="dclose" onclick="closeDetail()">✕</button>
     </div>
     <div class="dgrid">
-      ${v.svc?`<div class="dfield"><span class="df-label">Service</span><span class="df-val" style="color:#5aabdb">${v.svc}</span></div>`:''}
-      ${v.berth?`<div class="dfield"><span class="df-label">Berth</span><span class="df-val" style="color:#a07fe0">${v.berth}</span></div>`:''}
+      ${v.svc?`<div class="dfield"><span class="df-label">Service</span><span class="df-val" style="color:#5aabdb">${esc(v.svc)}</span></div>`:''}
+      ${v.berth?`<div class="dfield"><span class="df-label">Berth</span><span class="df-val" style="color:#a07fe0">${esc(v.berth)}</span></div>`:''}
       ${typeLbl?`<div class="dfield"><span class="df-label">Ship Type</span><span class="df-val" style="color:#4ac96a">${typeLbl}</span></div>`:''}
       <div class="dfield"><span class="df-label">Speed</span><span class="df-val">${v.sog?v.sog.toFixed(1)+' kn':'—'}</span></div>
       <div class="dfield"><span class="df-label">Course</span><span class="df-val">${v.cog!=null?Math.round(v.cog)+'°':'—'}</span></div>
@@ -1316,9 +1318,9 @@ function renderList() {
     return `<div class="vrow${selectedMmsi===v.mmsi?' sel':''}${stale?' stale':''}" onclick="selectVessel('${v.mmsi}')">
       <div class="vrow-top">
         ${flag?`<span class="vrow-flag">${flag}</span>`:''}
-        <span class="vname">${v.name||v.mmsi}</span>
-        ${v.svc?`<span class="tag-svc">${v.svc}</span>`:''}
-        ${v.berth?`<span class="tag-berth">${v.berth}</span>`:''}
+        <span class="vname">${esc(v.name||v.mmsi)}</span>
+        ${v.svc?`<span class="tag-svc">${esc(v.svc)}</span>`:''}
+        ${v.berth?`<span class="tag-berth">${esc(v.berth)}</span>`:''}
         ${typeLbl?`<span class="tag-type">${typeLbl}</span>`:''}
         ${isAppr?`<span class="tag-appr">APPR</span>`:''}
         ${bt?`<span class="etab ${bc}">${bt}</span>`:''}
@@ -1442,7 +1444,7 @@ function addAlert(type, name, msg) {
 function renderAlerts() {
   const el=document.getElementById('alerts-list');
   if (!alertLog.length){el.innerHTML='<div class="placeholder" style="padding:.5rem"><span style="font-size:.64rem;color:var(--muted)">No active alerts</span></div>';return;}
-  el.innerHTML=alertLog.map(a=>`<div class="alert-row"><div class="adot ${a.type}"></div><div class="atext"><b>${a.name}</b> — ${a.msg}</div><div class="atime">${fmtTime(a.t)}</div></div>`).join('');
+  el.innerHTML=alertLog.map(a=>`<div class="alert-row"><div class="adot ${a.type}"></div><div class="atext"><b>${esc(a.name)}</b> — ${esc(a.msg)}</div><div class="atime">${fmtTime(a.t)}</div></div>`).join('');
 }
 
 // ─── Toasts ───────────────────────────────────────────────────────────────────
@@ -1450,7 +1452,7 @@ function toast(type, title, msg, ms=6500) {
   const icons={crit:'🚨',warn:'⚠️',ok:'✓',info:'ℹ'};
   const el=document.createElement('div');
   el.className=`toast ${type}`;
-  el.innerHTML=`<div class="t-ico">${icons[type]||'ℹ'}</div><div><div class="t-ttl">${title}</div><div class="t-msg">${msg}</div></div>`;
+  el.innerHTML=`<div class="t-ico">${icons[type]||'ℹ'}</div><div><div class="t-ttl">${esc(title)}</div><div class="t-msg">${esc(msg)}</div></div>`;
   document.getElementById('toasts').appendChild(el);
   setTimeout(()=>el.remove(), ms);
 }
@@ -1495,19 +1497,19 @@ function printReport() {
   const term=document.getElementById('sp-term').value||'CSP Zeebrugge';
   const shift=hr>=6&&hr<14?'Early Shift  06:00–14:00':hr>=14&&hr<22?'Late Shift  14:00–22:00':'Night Shift  22:00–06:00';
   document.getElementById('pr-meta').innerHTML=
-    `Terminal: ${term}<br>Date: ${now.toLocaleDateString('nl-BE',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}<br>Shift: ${shift}<br>Printed: ${now.toLocaleTimeString('nl-BE',{hour:'2-digit',minute:'2-digit'})}`;
+    `Terminal: ${esc(term)}<br>Date: ${now.toLocaleDateString('nl-BE',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}<br>Shift: ${shift}<br>Printed: ${now.toLocaleTimeString('nl-BE',{hour:'2-digit',minute:'2-digit'})}`;
   document.getElementById('pr-gen').textContent=now.toLocaleString('nl-BE');
   const rows=Object.values(vessels).filter(v=>v.lat).sort((a,b)=>(a.distKm||999)-(b.distKm||999));
   document.getElementById('pr-tbody').innerHTML=rows.map(v=>{
     const d=v.dev;
     const status=d===undefined?'—':Math.abs(d)<30?'On Time':d>0?`+${d} min late`:`${Math.abs(d)} min early`;
-    return `<tr><td>${v.name||v.mmsi}</td><td>${v.svc||'—'}</td><td>${v.voy||'—'}</td><td>${v.berth||'TBC'}</td><td>${v.schedEta?fmtTime(v.schedEta):'—'}</td><td>${v.calcEta?fmtTime(v.calcEta):'—'}</td><td>${d!==undefined?(d>0?'+':'')+d+' min':'—'}</td><td>${status}</td></tr>`;
+    return `<tr><td>${esc(v.name||v.mmsi)}</td><td>${esc(v.svc||'—')}</td><td>${esc(v.voy||'—')}</td><td>${esc(v.berth||'TBC')}</td><td>${v.schedEta?fmtTime(v.schedEta):'—'}</td><td>${v.calcEta?fmtTime(v.calcEta):'—'}</td><td>${d!==undefined?(d>0?'+':'')+d+' min':'—'}</td><td>${status}</td></tr>`;
   }).join('');
   document.getElementById('pr-alerts-body').innerHTML=alertLog.length
-    ? alertLog.map(a=>`<div class="pr-alert-item">${fmtTime(a.t)} — <b>${a.name}</b>: ${a.msg}</div>`).join('')
+    ? alertLog.map(a=>`<div class="pr-alert-item">${fmtTime(a.t)} — <b>${esc(a.name)}</b>: ${esc(a.msg)}</div>`).join('')
     : '<p style="color:#888;font-size:.72rem">No active alerts at time of printing</p>';
   document.getElementById('pr-conf-body').innerHTML=conflicts.length
-    ? conflicts.map(c=>`<div class="pr-alert-item"><b>Berth ${c.berth}</b>: ${c.v1.name} and ${c.v2.name} — operations windows overlap</div>`).join('')
+    ? conflicts.map(c=>`<div class="pr-alert-item"><b>Berth ${esc(c.berth)}</b>: ${esc(c.v1.name)} and ${esc(c.v2.name)} — operations windows overlap</div>`).join('')
     : '<p style="color:#888;font-size:.72rem">No berth conflicts detected</p>';
   window.print();
 }
